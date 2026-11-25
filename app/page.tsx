@@ -2,6 +2,8 @@ import Image from "next/image";
 import FlightForm from "./FlightForm";
 import { DOMESTIC_AIRPORTS, INTERNATIONAL_AIRPORTS } from "../data/airports";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: "Smart4Us Flight — Domestic & International Flight Booking Nigeria",
   description: "Book flights from Lagos, Abuja, Kano, Port Harcourt, Enugu, Uyo and more. Domestic and international flight deals via WhatsApp.",
@@ -16,7 +18,7 @@ export const metadata = {
 export default function Home() {
   const phoneNumber = "2347069150984";
   const allAirports = [...DOMESTIC_AIRPORTS, ...INTERNATIONAL_AIRPORTS];
-  const uniqueAirports = Array.from(new Map(allAirports.map(a => [a.code, a])).values());
+  const uniqueAirports = Array.from(new Map(allAirports.map((a: any) => [a.code, a])).values());
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -27,7 +29,7 @@ export default function Home() {
     email: "SMART.4US@YAHOO.COM",
     telephone: "+2347069150984",
     address: { "@type": "PostalAddress", addressRegion: "Lagos", addressCountry: "NG" },
-    areaServed: uniqueAirports.map((a) => ({
+    areaServed: uniqueAirports.map((a: any) => ({
       "@type": "Airport",
       name: a.name,
       address: a.address,
@@ -96,8 +98,9 @@ export default function Home() {
         </div>
       </footer>
 
-           {/* JSON-LD structured data */}
-            <script type="application/ld+json"
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
     </div>
