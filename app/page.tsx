@@ -2,8 +2,6 @@ import Image from "next/image";
 import FlightForm from "./FlightForm";
 import { DOMESTIC_AIRPORTS, INTERNATIONAL_AIRPORTS } from "../data/airports";
 
-export const dynamic = 'force-dynamic';
-
 export const metadata = {
   title: "Smart4Us Flight — Domestic & International Flight Booking Nigeria",
   description: "Book flights from Lagos, Abuja, Kano, Port Harcourt, Enugu, Uyo and more. Domestic and international flight deals via WhatsApp.",
